@@ -1,0 +1,10 @@
+.base_page{
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    font-family: "Abaddon Cyr", cursive;
+}
+
+.problem{
+    margin-left: 500px;
+}
