@@ -1,6 +1,7 @@
 import hashlib
-import sqlite3
 
-sql_file = open("db.sqlite3")
+hash_object_md5 = hashlib.md5(b'iliaSlob1')
+print(hash_object_md5)
 
-working_cursor = sql_file.cursor()
+hash_object_sha256 = hashlib.sha256(b'iliaSlob1')
+print(hash_object_sha256)
