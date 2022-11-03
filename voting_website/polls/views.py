@@ -6,7 +6,7 @@ from .models import Choice, Question
 
 class PollsListView(generic.ListView):
     template_name = 'polls/polls_list.html'
-    context_object_name = 'latest_question_list'
+    context_object_name = 'latest_poll_list'
 
     def get_queryset(self):
         """
