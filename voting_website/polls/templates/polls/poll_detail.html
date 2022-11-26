@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-</fieldset>
-<input type="submit" value="Vote">
-</form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+  <div class="col-lg-8 mx-auto p-4 py-md-5">
+      <div class="row g-5">
+      <div class="col-md-6">
+      <main class="container">
+            <div>
+                <form action="{% url 'polls:vote' question.id %}" method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                    <legend><h2>{{ question.question_text }}</h2></legend>
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                        {% for choice in question.choice_set.all %}
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+                        {% endfor %}
+                </fieldset>
+                <input type="submit" value="Vote">
+                </form>
+            </div>
+      </main>
+          <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+    </nav>
+  </div>
+          <article class="blog-post">
+        <h2 class="blog-post-title mb-1">О вопросе и сайте</h2>
+        <p class="blog-post-meta">{{ question.pub_date }} Your Best Admin ;)</p>
+
+        <p>Нам очень важно ваше мнение о нашем сайте, пожалуйста, оставьте ваш отзыв на почту </p>
+        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
+      </article>
+        </div>
+      </div>
+  </div>
+  </div>
+{% endblock %}

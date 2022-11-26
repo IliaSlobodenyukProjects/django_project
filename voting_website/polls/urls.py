@@ -1,15 +1,14 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 from . import views
 
 app_name = 'polls'
 urlpatterns = [
-    path('', views.PollsListView.as_view(),
-         name='polls_list'),
-    path('<int:pk>/', views.PollDetailView.as_view(),
-         name='poll_detail'),
-    path('<int:pk>/results/', views.PollResultsView.as_view(),
-         name='poll_results'),
-    path('<int:question_id>/vote/', views.vote,
-         name='poll_vote'),
+        path('', views.IndexView.as_view(), name='index'),
+        path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+        path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
+        path('<int:question_id>/vote/', views.vote, name='vote'),
 ]

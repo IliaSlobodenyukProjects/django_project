@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>{{ question.question_text }}</h1>
-
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-
-<a href="{% url 'polls:poll_detail' question.id %}">Vote again?</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-lg-8 mx-auto p-4 py-md-5">
+  <div class="row g-5">
+      <div class="col-md-6">
+        <h2>{{ question.question_text }}</h2>
+        <p>Здесь вы можете увидеть сколько человек ответили так же, как вы.</p>
+        <ul class="icon-list ps-0">
+            {% for choice in question.choice_set.all %}
+                <li class="d-flex align-items-start mb-1">{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            {% endfor %}
+        </ul>
+      </div>
+  </div>
+    <div class="mb-5">
+      <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary btn-lg px-4">Проголосовать ещё раз?</a>
+  </div>
+</div>
+{% endblock %}
