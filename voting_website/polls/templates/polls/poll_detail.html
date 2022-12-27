@@ -9,6 +9,7 @@
                 <form action="{% url 'polls:vote' question.id %}" method="post">
                     {% csrf_token %}
                     <fieldset>
+
                     <legend><h2>{{ question.question_text }}</h2></legend>
                     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
                         {% for choice in question.choice_set.all %}
@@ -29,8 +30,20 @@
         <p class="blog-post-meta">{{ question.pub_date }} Your Best Admin ;)</p>
 
         <p>Нам очень важно ваше мнение о нашем сайте, пожалуйста, оставьте ваш отзыв на почту </p>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-      </article>
+         <article class="blog-post">
+        <h2 class="blog-post-title mb-1">Патч недели</h2>
+        <p class="blog-post-meta">02.12.2022 by <a href="#">Админ</a></p>
+
+        <p>В последнем патче:</p>
+        <hr>
+        <p>Добавлена распознавание и сортировка пользователей по ip-адресу.</p>
+        <h2>От админа</h2>
+        <p>В планах:</p>
+        <blockquote class="blockquote">
+          <p>Запрет голосовать в одном опросе больше одного раза.</p>
+        </blockquote>
+        <p>Сайту очень важно, что вы о нем думаете. Обратная связь важна.</p>
+      </article></article>
         </div>
       </div>
   </div>

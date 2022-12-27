@@ -4,11 +4,6 @@ from django.db import models
 from django.utils import timezone
 
 
-# class GroupOfQuestions(models.Model):
-#     set_of_questions = []
-#     id = models.AutoField(primary_key=True)
-
-
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
