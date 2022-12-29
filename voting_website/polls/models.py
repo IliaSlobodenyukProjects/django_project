@@ -9,7 +9,9 @@ class Question(models.Model):
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
-        return '{} - {} ({})'.format(self.pk, self.question_text, self.pub_date)
+        return '{pk} - {question} ({published_at})'.format(
+            pk=self.pk, question=self.question_text, published_at=self.pub_date
+        )
 
     def was_published_recently(self):
         now = timezone.now()
